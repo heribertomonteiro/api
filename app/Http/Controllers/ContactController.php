@@ -12,7 +12,7 @@ class ContactController extends Controller
 {
     public function index() : JsonResponse
     {
-        $contacts = Contacts::orderBy('id', 'ASC')->get();
+        $contacts = Contacts::orderBy('nome', 'ASC')->get();
         return response()->json([
             'status' => true,
             'contacts' => $contacts
@@ -27,7 +27,7 @@ class ContactController extends Controller
         ],200);
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : JsonResponse
     {
         DB::beginTransaction();
         
